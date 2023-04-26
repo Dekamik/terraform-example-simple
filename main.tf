@@ -17,3 +17,10 @@ resource "digitalocean_droplet" "server" {
   region   = var.region
   size     = var.droplet_size
 }
+
+resource "digitalocean_project" "simple" {
+  name      = "simple"
+  resources = [
+    digitalocean_droplet.server.urn
+  ]
+}
